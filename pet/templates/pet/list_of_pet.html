@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<body>
+    <div class="mx-auto my-1 p-4">
+    <h1 class="h1">Cписок животных в приюте</h1>
+    <br>
+    
+    <div class="d-flex justify-content-around" style="margin-bottom: 1em;">
+        
+        <form method="get" class="d-flex">
+            {{ filter.form.as_p }}
+            <button type="submit" class="btn btn btn-secondary" style="margin-left: 1em;">Поиск</button>
+        </form>
+        
+        <a href="{% url 'pet_add' %}"><button class="btn btn-outline-secondary">Добавить животное</button></a>
+    </div>      
+
+    <div class="pet-list row">
+        {% for pet in filter.qs %}
+        <ul class="pets-list__item list-group list-group-flush col-sm-6">
+            <div class="card" style="margin-bottom: 1em;">
+            <li class="list-group-item">Тип животного: {{pet.pet_type}}</li>
+            <li class="list-group-item">Кличка: {{pet.pet_name}}</li>
+            <li class="list-group-item">Дата рождения: {{pet.birthday}}</li>
+            <li class="list-group-item">Возраст: {{calculate_age}}</li>
+            <li class="list-group-item">Рост: {{pet.pet_high}}</li>
+            <li class="list-group-item">Вес: {{pet.pet_weight}}</li>
+            <li class="list-group-item">Наличие паспорта: </li>
+            <li class="list-group-item">Номер паспорта: {{pet.pet_passport_number}}</li>
+            
+            <div class="d-flex justify-content-around" style="margin: 1rem 0;">
+                <a href="{% url 'pet_edit' pet.id%}"><button class="btn btn-outline-secondary">Изменить</button></a>
+                <a href="{% url 'pet_delete' pet.id%}"><button class="btn btn-outline-secondary">Удалить</button></a>
+            </div>
+        </div>
+        </ul>
+        {% endfor %}
+    </div>
+    </div>
+    <body>
+{% endblock %}
