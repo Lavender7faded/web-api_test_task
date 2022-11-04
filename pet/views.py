@@ -5,6 +5,7 @@ from .filters import PetFilter
 from datetime import date
 import math
 
+
 def pet_form(request, pk=0):
     if request.method == 'GET':
         if pk == 0:
@@ -14,7 +15,7 @@ def pet_form(request, pk=0):
             form = PetForm(instance=pet)
         context = {'form': form}
         return render(request, 'pet/add_new_pet.html', context)
-    else:
+    elif request.method == 'POST':
         if pk == 0:
             form = PetForm(request.POST)
         else:
@@ -22,17 +23,16 @@ def pet_form(request, pk=0):
             form = PetForm(request.POST, instance=pet)
         if form.is_valid():
             form.save()
-        
         return redirect('search')
 
 def pet_delete(self, pk):
-    pet = Pet.objects.get(id=pk)
+    pet = Pet.objects.filter(id=pk).delete()
     pet.delete()
     return redirect('search')
 
 def type_search(request):
     filter = PetFilter(request.GET, queryset=Pet.objects.all())
-    return render(request, 'pet/list_of_pet.html', {'filter': filter})
+    return render(request, 'pet/list_of_pet.html', context={'filter': filter})
 
 def calculate_age(birthday):
     today = date.today()

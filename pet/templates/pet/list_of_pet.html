@@ -26,12 +26,12 @@
             <li class="list-group-item">Тип животного: {{pet.pet_type}}</li>
             <li class="list-group-item">Кличка: {{pet.pet_name}}</li>
             <li class="list-group-item">Дата рождения: {{pet.birthday}}</li>
-            <li class="list-group-item">Возраст: {{calculate_age}}</li>
+            <li class="list-group-item">Возраст: {{pet.age}}</li>
             <li class="list-group-item">Рост: {{pet.pet_high}}</li>
             <li class="list-group-item">Вес: {{pet.pet_weight}}</li>
-            <li class="list-group-item">Наличие паспорта: </li>
+            <li class="list-group-item">Наличие паспорта: {{pet.has_passport}}</li>
             <li class="list-group-item">Номер паспорта: {{pet.pet_passport_number}}</li>
-            
+
             <div class="d-flex justify-content-around" style="margin: 1rem 0;">
                 <a href="{% url 'pet_edit' pet.id%}"><button class="btn btn-outline-secondary">Изменить</button></a>
                 <a href="{% url 'pet_delete' pet.id%}"><button class="btn btn-outline-secondary">Удалить</button></a>

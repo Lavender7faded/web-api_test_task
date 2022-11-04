@@ -4,7 +4,9 @@ from django.core.validators import RegexValidator
 
 class PetForm(forms.ModelForm):
     
-    birthday = forms.DateField(validators=[RegexValidator(regex='^[1-2]\d{3}-[0-1]\d-[0-3]\d$')])
+    birthday = forms.DateField(
+        validators=[RegexValidator(regex='^[1-2]\d{3}-[0-1]\d-[0-3]\d$')],
+        widget=forms.DateInput())
 
     class Meta:
         model = Pet
