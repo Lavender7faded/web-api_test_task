@@ -1,13 +1,20 @@
 from django import forms
-from .models import Pet
-from django.core.validators import RegexValidator
+from pet.models import Pet, Measure
+
 
 class PetForm(forms.ModelForm):
-    
-    birthday = forms.DateField(
-        validators=[RegexValidator(regex='^[1-2]\d{3}-[0-1]\d-[0-3]\d$')],
-        widget=forms.DateInput())
-
     class Meta:
         model = Pet
-        fields = ['pet_type', 'pet_name', 'birthday', 'pet_high', 'pet_weight', 'pet_passport_number']
+        fields = ['pet_type', 'pet_name', 'birthday', 'pet_passport_number']
+        widgets = {
+            'birthday': forms.DateInput(
+                format=('%Y-%m-%d'),
+                attrs={'class': 'form-control',
+                       'placeholder': 'Select a date',
+                       'type': 'date'})}
+
+
+class MeasureForm(forms.ModelForm):
+    class Meta:
+        model = Measure
+        fields = ['pet_high', 'pet_weight']

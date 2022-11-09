@@ -13,27 +13,27 @@
     
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Тип животного</span>
-            {{ form.pet_type|add_class:'form-control' }}
+            {{ pet_form.pet_type|add_class:'form-control' }}
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Кличка</span>
-            {{form.pet_name|add_class:'form-control' }}
+            {{pet_form.pet_name|add_class:'form-control' }}
         </div>
          <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Дата рождения</span>
-        {{form.birthday|add_class:'form-control' }}
+            {{pet_form.birthday|add_class:'form-control' }}
         </div>
          <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Рост</span>
-        {{form.pet_high|add_class:'form-control' }}
+            {{measure_form.pet_high|add_class:'form-control' }}
         </div>
          <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Вес</span>
-        {{form.pet_weight|add_class:'form-control' }}
+            {{measure_form.pet_weight|add_class:'form-control' }}
         </div>
          <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Номер паспорта</span>
-        {{form.pet_passport_number|add_class:'form-control' }}
+            {{pet_form.pet_passport_number|add_class:'form-control' }}
         </div>
 
         <button type="submit" class="btn btn-outline-secondary">Сохранить</button>

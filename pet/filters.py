@@ -1,9 +1,13 @@
 import django_filters
-from pet.models import Pet
+from pet.models import PetType, Pet
+from django import forms
 
 
 class PetFilter(django_filters.FilterSet):
-    pet_type = django_filters.CharFilter(label='Тип животного')
+    pet_type = django_filters.ModelChoiceFilter(
+        queryset=PetType.objects.all(),
+        label="Тип животного",
+        widget=forms.Select(attrs={'class': 'span6 small-margin-top small-margin-bottom'}))
 
     class Meta:
         model = Pet

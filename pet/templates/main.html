@@ -9,6 +9,28 @@
 
     <head>
         <meta charset="UTF-8">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'search' %}">Home <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'pet_add' %}">Добавить животное</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'add_pet_measure' %}">Замеры</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'add_pet_medcard' %}">Медицинская карта</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
     </head>
 
     <body>
