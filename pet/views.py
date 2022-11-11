@@ -16,7 +16,7 @@ def pet_and_measure_form(request, pk=0):
             else:
                 pet = Pet.objects.get(id=pk)
                 pet_form = PetForm(instance=pet)
-                pet_measure = Measure.objects.get(pet_id=pk)
+                pet_measure = Measure.objects.filter(pet_id=pk).latest('measure_date')
                 measure_form = MeasureForm(instance=pet_measure)
             context = {'pet_form': pet_form, 'measure_form': measure_form}
         except ObjectDoesNotExist:
@@ -29,7 +29,7 @@ def pet_and_measure_form(request, pk=0):
         else:
             pet = Pet.objects.get(id=pk)
             pet_form = PetForm(request.POST, instance=pet)
-            pet_measure = Measure.objects.get(pet_id=pk)
+            pet_measure = Measure.objects.filter(pet_id=pk).latest('measure_date')
             measure_form = MeasureForm(request.POST, instance=pet_measure)
         if pet_form.is_valid() and measure_form.is_valid():
             pet = pet_form.save()
