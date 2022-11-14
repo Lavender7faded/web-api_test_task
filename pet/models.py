@@ -50,7 +50,7 @@ class Pet(models.Model):
     def feed_amount(self):
         feed_amount = PetFeed.objects.get(pet_type=self.pet_type)
         return feed_amount.pet_feed_amount
-
+        
 
 class Measure(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
